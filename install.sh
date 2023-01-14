@@ -72,7 +72,13 @@ PKGS=(
 # add specific package for mongodb
 case "${ARCH}" in
   amd64|arm64|"")
-    PKGS+=( mongodb-server-core )
+    PKGS+=( mongodb-org )
+
+    # add mongodb official repo
+    apt-get update
+    apt-get install --no-install-recommends -y ca-certificates gnupg wget
+    wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add -
+    echo "deb [ arch=${ARCH} ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list
     ;;
   armv7l)
     PKGS+=( mongodb )
