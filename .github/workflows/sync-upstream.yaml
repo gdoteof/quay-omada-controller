@@ -18,7 +18,7 @@ jobs:
       run: |
         git config --global user.name "GitHub Actions Bot"
         git config --global user.email "<>"
-        git remote add upstream git@github.com:mbentley/docker-omada-controller.git
+        git remote add upstream https://github.com/mbentley/docker-omada-controller.git
         git fetch upstream
         git checkout master
         git merge upstream/master --allow-unrelated-histories || echo "Conflicts occurred during merge, creating a PR instead." && exit 1
