@@ -1,6 +1,7 @@
 name: Sync with upstream and build docker images
 
 on:
+  workflow:
   schedule:
     - cron: '0 0 * * *' # This will run the workflow every day at midnight
 
